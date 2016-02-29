@@ -22,6 +22,11 @@
 
 <template name="message">
   <li>
-    {{message}}
+    <div class="message-header">
+      {{user.username}} <span class="time"> {{time}}</span>
+    </div>
+    <div class="message-content">
+      {{message}}
+    </div>
   </li>
 </template>

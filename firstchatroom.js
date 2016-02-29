@@ -1,5 +1,9 @@
 Messages = new Mongo.Collection('messages');
 
+
+
+
+
 if (Meteor.isClient) {
 
   Template.messages.helpers({
@@ -17,10 +21,22 @@ if (Meteor.isClient) {
           Messages.insert({
             message:value,
             timestamp: new Date(),
-            //user: Meteor.userId()
+            user: Meteor.userId()
           });
         }
     }
+  });
+
+  Template.message.helpers({
+      user:function() {
+        return Meteor.users.findOne({_id: this.user});
+      },
+
+      time: function() {
+        moment.locale('fr');
+        return moment(this.timestamp).format('DD-MM-YYYY HH:mm');
+      }
+
   });
 
   Accounts.ui.config({
