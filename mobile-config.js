@@ -1,1 +1,1 @@
-App.accesRule('*');
+App.accessRule('*');
